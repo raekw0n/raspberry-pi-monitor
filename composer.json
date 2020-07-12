@@ -1,0 +1,13 @@
+{
+    "name": "chris/raspi-mon",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Chris Rowles",
+            "email": "me@rowles.ch"
+        }
+    ],
+    "require": {
+        "raekw0n/danielle": "^0.0.1"
+    }
+}

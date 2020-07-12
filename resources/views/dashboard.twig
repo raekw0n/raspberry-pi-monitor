@@ -1,0 +1,105 @@
+{% extends 'layout.twig' %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="third widget doughnut">
+                <div class="chart-legend">
+                    <h3>Temperature</h3>
+                </div>
+                <div id="temp" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="third widget line">
+                <div class="chart-legend">
+                    <h3>CPU</h3>
+                </div>
+                <div id="cpu" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="third widget">
+                <div class="chart-legend">
+                    <h3>Disk</h3>
+                </div>
+                <div id="disk" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-6">
+            <table class="table table-responsive-sm">
+                <thead>
+                <tr>
+                    <th scope="col">CPU Temp</th>
+                    <th scope="col">CPU Freq</th>
+                    <th scope="col">CPU Usage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ core.data.cpu.temp|round }}°C</td>
+                    <td>{{ core.data.cpu.freq }} MHz</td>
+                    <td>{{ core.data.cpu.usage }}%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-responsive-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Disk Used</th>
+                    <th scope="col">Disk Free</th>
+                    <th scope="col">Disk Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ core.data.disk.used|round }}GB</td>
+                    <td>{{ core.data.disk.free|round }}GB</td>
+                    <td>{{ core.data.disk.total|round }}GB</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-12">
+            <table class="table table-responsive-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">PID</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Mem</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for proc in core.data.processes %}
+                    <tr>
+                        <td>{{ proc.name }}</td>
+                        <td>{{ proc.pid }}</td>
+                        <td>{{ proc.username }}</td>
+                        <td>{{ proc.mem }} MiB</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(() => {
+            App.gauge('#temp', Math.round({{ core.data.cpu.temp }}), '{y}°C', '#28a745');
+            App.gauge('#cpu', Math.round({{ core.data.cpu.usage }}), '{y}%', '#28a745');
+            App.gauge('#disk', Math.round({{ core.data.disk.percent }}), '{y}%', '#28a745');
+        });
+    </script>
+{% endblock %}

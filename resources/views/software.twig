@@ -1,0 +1,49 @@
+{% extends 'layout.twig' %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    <div class="row h-100">
+        <div class="col-md-12">
+            <h1>Software</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row my-3 h-100">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Apache</h5>
+                    <hr>
+                    <div class="form-group">
+                        <label for="version" class="control-label">Version</label>
+                        <small id="version">2.4.39</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sites-available" class="control-label">Sites Available</label>
+                        <ul id="sites-available">
+                            <li>versyx.local.conf</li>
+                            <li>boilerplate.local.conf</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sites-enabled" class="control-label">Sites Enabled</label>
+                        <ul id="sites-enabled">
+                            <li>rowles.local.conf</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

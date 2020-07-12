@@ -1,0 +1,421 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Montserrat', 'Lato', sans-serif;
+}
+
+.navbar {
+    small {
+        color: white;
+    }
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+
+    .sidebar-heading {
+        padding: 0 1.25rem;
+        height: 80px;
+        line-height: 80px;
+        font-size: 1.5em;
+    }
+
+    .list-group {
+        width: 15rem;
+    }
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+}
+
+.btn-toggle {
+    margin: 0 4rem;
+    padding: 0;
+    position: relative;
+    border: none;
+    height: 1.5rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+    color: #6b7381;
+    background: #bdc1c8;
+    &:focus, &.focus, &:focus.active, &.focus.active {
+        outline: none;
+    }
+    &:before, &:after {
+        line-height: 1.5rem;
+        width: 4rem;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: absolute;
+        bottom: 0;
+        transition: opacity 0.25s;
+    }
+    &:before {
+        content: 'Off';
+        left: -4rem;
+    }
+    &:after {
+        content: 'On';
+        right: -4rem;
+        opacity: 0.5;
+    }
+    > .handle {
+        position: absolute;
+        top: 0.1875rem;
+        left: 0.1875rem;
+        width: 1.125rem;
+        height: 1.125rem;
+        border-radius: 1.125rem;
+        background: #fff;
+        transition: left 0.25s;
+    }
+    &.active {
+        transition: background-color 0.25s;
+        > .handle {
+            left: 1.6875rem;
+            transition: left 0.25s;
+        }
+        &:before {
+            opacity: 0.5;
+        }
+        &:after {
+            opacity: 1;
+        }
+    }
+    &.btn-sm {
+        &:before, &:after {
+            line-height: -0.5rem;
+            color: #fff;
+            letter-spacing: 0.75px;
+            left: 0.4125rem;
+            width: 2.325rem;
+        }
+        &:before {
+            text-align: right;
+        }
+        &:after {
+            text-align: left;
+            opacity: 0;
+        }
+        &.active {
+            &:before {
+                opacity: 0;
+            }
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+    &.btn-xs {
+        &:before, &:after {
+            display: none;
+        }
+    }
+    &:before, &:after {
+        color: #6b7381;
+    }
+    &.active {
+        background-color: #28a745;
+    }
+    &.btn-lg {
+        margin: 0 5rem;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 2.5rem;
+        width: 5rem;
+        border-radius: 2.5rem;
+        &:focus, &.focus, &:focus.active, &.focus.active {
+            outline: none;
+        }
+        &:before, &:after {
+            line-height: 2.5rem;
+            width: 5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+        &:before {
+            content: 'Off';
+            left: -5rem;
+        }
+        &:after {
+            content: 'On';
+            right: -5rem;
+            opacity: 0.5;
+        }
+        > .handle {
+            position: absolute;
+            top: 0.3125rem;
+            left: 0.3125rem;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 1.875rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+        &.active {
+            transition: background-color 0.25s;
+            > .handle {
+                left: 2.8125rem;
+                transition: left 0.25s;
+            }
+            &:before {
+                opacity: 0.5;
+            }
+            &:after {
+                opacity: 1;
+            }
+        }
+        &.btn-sm {
+            &:before, &:after {
+                line-height: 0.5rem;
+                color: #fff;
+                letter-spacing: 0.75px;
+                left: 0.6875rem;
+                width: 3.875rem;
+            }
+            &:before {
+                text-align: right;
+            }
+            &:after {
+                text-align: left;
+                opacity: 0;
+            }
+            &.active {
+                &:before {
+                    opacity: 0;
+                }
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+        &.btn-xs {
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+    &.btn-sm {
+        margin: 0 0.5rem;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 1.5rem;
+        width: 3rem;
+        border-radius: 1.5rem;
+        &:focus, &.focus, &:focus.active, &.focus.active {
+            outline: none;
+        }
+        &:before, &:after {
+            line-height: 1.5rem;
+            width: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+        &:before {
+            content: 'Off';
+            left: -0.5rem;
+        }
+        &:after {
+            content: 'On';
+            right: -0.5rem;
+            opacity: 0.5;
+        }
+        > .handle {
+            position: absolute;
+            top: 0.1875rem;
+            left: 0.1875rem;
+            width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 1.125rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+        &.active {
+            transition: background-color 0.25s;
+            > .handle {
+                left: 1.6875rem;
+                transition: left 0.25s;
+            }
+            &:before {
+                opacity: 0.5;
+            }
+            &:after {
+                opacity: 1;
+            }
+        }
+        &.btn-sm {
+            &:before, &:after {
+                line-height: -0.5rem;
+                color: #fff;
+                letter-spacing: 0.75px;
+                left: 0.4125rem;
+                width: 2.325rem;
+            }
+            &:before {
+                text-align: right;
+            }
+            &:after {
+                text-align: left;
+                opacity: 0;
+            }
+            &.active {
+                &:before {
+                    opacity: 0;
+                }
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+        &.btn-xs {
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+    &.btn-xs {
+        margin: 0 0;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 1rem;
+        width: 2rem;
+        border-radius: 1rem;
+        &:focus, &.focus, &:focus.active, &.focus.active {
+            outline: none;
+        }
+        &:before, &:after {
+            line-height: 1rem;
+            width: 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            bottom: 0;
+            transition: opacity 0.25s;
+        }
+        &:before {
+            content: 'Off';
+            left: 0;
+        }
+        &:after {
+            content: 'On';
+            right: 0;
+            opacity: 0.5;
+        }
+        > .handle {
+            position: absolute;
+            top: 0.125rem;
+            left: 0.125rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 0.75rem;
+            background: #fff;
+            transition: left 0.25s;
+        }
+        &.active {
+            transition: background-color 0.25s;
+            > .handle {
+                left: 1.125rem;
+                transition: left 0.25s;
+            }
+            &:before {
+                opacity: 0.5;
+            }
+            &:after {
+                opacity: 1;
+            }
+        }
+        &.btn-sm {
+            &:before, &:after {
+                line-height: -1rem;
+                color: #fff;
+                letter-spacing: 0.75px;
+                left: 0.275rem;
+                width: 1.55rem;
+            }
+            &:before {
+                text-align: right;
+            }
+            &:after {
+                text-align: left;
+                opacity: 0;
+            }
+            &.active {
+                &:before {
+                    opacity: 0;
+                }
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+        &.btn-xs {
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+    &.btn-secondary {
+        color: #6b7381;
+        background: #bdc1c8;
+        &:before, &:after {
+            color: #6b7381;
+        }
+        &.active {
+            background-color: #ff8300;
+        }
+    }
+}
+
+.fan-status {
+    height: 16px;
+    width: 16px;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled {
+        #sidebar-wrapper {
+            margin-left: -15rem;
+        }
+    }
+}

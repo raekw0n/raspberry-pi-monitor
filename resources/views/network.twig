@@ -1,0 +1,113 @@
+{% extends 'layout.twig' %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    <div class="row h-100">
+        <div class="col-md-6">
+            <div class="widget text-center">
+                <label class="form-check-label font-weight-bold" for="quality">Signal Quality</label>
+                <div id="quality" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+        <div class="col-md-6 my-auto">
+            <table class="table table-sm">
+                <tbody>
+                <tr>
+                    <th scope="col">SSID</th>
+                    <td>{{ network.data.wifi[0].name }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Channel</th>
+                    <td>{{ network.data.wifi[0].channel}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Signal</th>
+                    <td>{{ network.data.wifi[0].signal}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Encryption</th>
+                    <td>{{ network.data.wifi[0].encryption}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">MAC Address</th>
+                    <td>{{ network.data.wifi[0].address}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <ul class="nav nav-tabs">
+        {% for inet,stat in network.data.interfaces %}
+            {% if inet == "wlan0" %}
+                {% set active = "active" %}
+            {% else  %}
+                {% set active = "" %}
+            {% endif %}
+            <li class="nav-item"><a class="nav-link {{ active }}" data-toggle="tab" href="#{{ inet }}">{{ inet }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content my-3" style="width: 100%">
+        {% for inet,stat in network.data.interfaces %}
+            {% if inet == "wlan0" %}
+                {% set active = "active" %}
+            {% else %}
+                {% set active = "" %}
+            {% endif %}
+            <div class="tab-pane {{ active }}" id="{{ inet }}">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-dark o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fas fa-fw fa-arrow-circle-down"></i>
+                                </div>
+                                <div class="mr-5">{{ stat.mb_received|number_format(2, '.', ',')  }} MB<br>Received</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-dark bg-light o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fas fa-fw fa-arrow-circle-up"></i>
+                                </div>
+                                <div class="mr-5">{{ stat.mb_received|number_format(2, '.', ',') }} MB<br> Sent</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-light bg-dark h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fas fa-fw fa-arrow-circle-down"></i>
+                                </div>
+                                <div class="mr-5">{{ stat.pk_received|number_format(0, '.', ',') }} <br>Packets Received</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-dark bg-light o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fas fa-fw fa-arrow-circle-up"></i>
+                                </div>
+                                <div class="mr-5">{{ stat.pk_sent|number_format(0, '.', ',') }} <br>Packets Sent</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+            App.gauge('#quality', Math.round({{ network.data.wifi[0].quality }}), '{y}%', '#28a745')
+        });
+    </script>
+{% endblock %}

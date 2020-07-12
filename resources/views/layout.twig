@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PiMonitor</title>
+    <meta http-equiv="refresh" content="300">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro:200,400,700" rel="stylesheet">
+    {% block styles %}
+    {% endblock %}
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <div class="bg-dark text-light border-right-0" id="sidebar-wrapper">
+        <div class="sidebar-heading">PiMonitor
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="/" class="list-group-item list-group-item-action bg-dark text-light">Dashboard</a>
+            <a href="/network" class="list-group-item list-group-item-action bg-dark text-light">Network</a>
+            <a href="/software" class="list-group-item list-group-item-action bg-dark text-light">Software</a>
+            <a href="settings" class="list-group-item list-group-item-action bg-dark text-light">Settings</a>
+        </div>
+    </div>
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="btn btn-sm text-light" id="menu-toggle"><i class="fas fa fa-2x fa-bars"></i></button>
+            <div class="navbar ml-auto">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <small>
+                            OS: {{ core.data.platform.distro }}. &nbsp; Kernel: {{ core.data.platform.kernel }}
+                            <br>
+                            Uptime: {{ core.data.uptime.uptime }}. &nbsp;
+                            Temp: {{ core.data.cpu.temp|round }}°C
+                            (<img src="media/fan.png"
+                                  alt="Fan: {{ core.fan.data }}"
+                                  title="Fan: {{ core.fan.data }}"
+                                  class="fan-status"/>)
+                        </small>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container my-5">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/bundle.min.js"></script>
+<script type="text/javascript" src="js/app.min.js"></script>
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+    {% if core.fan.data == "Enabled" %}
+        TweenMax.to($('.fan-status'), 2, {rotation: 360, repeat: -1, ease: Linear.easeInOut});
+    {% endif %}
+</script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

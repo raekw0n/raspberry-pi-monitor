@@ -1,0 +1,51 @@
+{% extends 'layout.twig' %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    <div class="row h-100">
+        <div class="col-md-12">
+            <h1>Pi Settings</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row my-3 h-100">
+        <div class="col-md-4">
+            <h5>Cooling</h5>
+            <hr>
+            <div class="form-group">
+                <label for="fan" class="control-label">Fan:</label>
+                <button type="button" id="fan" title="Fan is: {{ core.fan.data }}"
+                        class="btn btn-sm btn-toggle {{ (core.fan.data == "Enabled") ? "active" : "" }}"
+                        data-toggle="button"
+                        aria-pressed="{{ (core.fan.data == "Enabled") ? "true" : "false" }}">
+                    <div class="handle"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('#fan').click((e) => {
+            e.preventDefault();
+            let fan = $('#fan');
+            let pressed = fan.attr('aria-pressed');
+            let status = "";
+
+            // I have absolutely no idea why, but the attribute works backwards :/
+            if (pressed === "false") {
+                status = "enabled";
+                TweenMax.to($('.fan-status'), 2, {rotation: 360, repeat: -1, ease: Linear.easeInOut});
+            } else {
+                status = "disabled";
+                TweenMax.killAll();
+            }
+            $.get('http://raspberry-api.local/system/fan/set/' + status, (response) => {
+                alert("Fan is " + JSON.stringify(response.data));
+            });
+        });
+    </script>
+{% endblock %}

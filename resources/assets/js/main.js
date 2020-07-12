@@ -1,0 +1,5 @@
+import 'bootstrap';
+
+import App from './app';
+
+window.App = App;
