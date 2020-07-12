@@ -1,6 +1,7 @@
 {
     "name": "chris/raspi-mon",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Chris Rowles",
