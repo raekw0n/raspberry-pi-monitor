@@ -1,0 +1,49 @@
+{
+    "data": {
+        "connections": {
+            "ssh": {
+                "local_port": 22,
+                "remote_ip": "192.168.1.84"
+            }
+        },
+        "interfaces": {
+            "wlan0": {
+                "dropout": 0,
+                "error_in": 0,
+                "error_out": 0,
+                "mb_received": 1.6783027648925781,
+                "mb_sent": 3.131010055541992,
+                "pk_received": 23473,
+                "pk_sent": 19858
+            },
+            "lo": {
+                "dropout": 0,
+                "error_in": 0,
+                "error_out": 0,
+                "mb_received": 33.35640239715576,
+                "mb_sent": 33.35640239715576,
+                "pk_received": 582858,
+                "pk_sent": 582858
+            },
+            "eth0": {
+                "dropout": 0,
+                "error_in": 0,
+                "error_out": 0,
+                "mb_received": 0,
+                "mb_sent": 0,
+                "pk_received": 0,
+                "pk_sent": 0
+            }
+        },
+        "wifi": [
+            {
+                "address": "",
+                "channel": "2",
+                "encryption": "WPA v.1",
+                "name": "",
+                "quality": " 64",
+                "signal": "-65 dBm"
+            }
+        ]
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "data": {
+        "cpu": {
+            "freq": 600,
+            "temp": 57.66,
+            "usage": 36.3
+        },
+        "disk": {
+            "free": 20.271629333496094,
+            "percent": 86.9,
+            "total": 27.354976654052734,
+            "used": 5.671802520751953
+        },
+        "platform": {
+            "distro": "Raspbian GNU/Linux 10 (buster)",
+            "kernel": "4.19.57-v7l+"
+        },
+        "processes": [
+            {
+                "name": "setiathome_8.06_arm-unknown-linux",
+                "pid": 24070,
+                "username": "boinc",
+                "mem": 27
+            },
+            {
+                "name": "setiathome_8.06_arm-unknown-linux",
+                "pid": 24071,
+                "username": "boinc",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24072,
+                "username": "www-data",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24073,
+                "username": "www-data",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24074,
+                "username": "www-data",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24075,
+                "username": "www-data",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24084,
+                "username": "www-data",
+                "mem": 21
+            },
+            {
+                "name": "apache2",
+                "pid": 24066,
+                "username": "root",
+                "mem": 20
+            },
+            {
+                "name": "php-fpm7.3",
+                "pid": 12851,
+                "username": "root",
+                "mem": 20
+            },
+            {
+                "name": "php-fpm7.3",
+                "pid": 12852,
+                "username": "www-data",
+                "mem": 20
+            }
+        ],
+        "uptime": {
+            "uptime": "2 days, 21 hours, 7 minutes, 21 seconds"
+        }
+    }
+}
