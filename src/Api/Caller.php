@@ -19,13 +19,11 @@ use GuzzleHttp\Exception\GuzzleException;
 class Caller
 {
     /** @var Client the api client */
-    private $client;
+    private Client $client;
 
     /**
      * Monitor constructor.
      *
-     * Replace the URL with the one you have configured for
-     * your own py-monitor api instance.
      */
     public function __construct()
     {
@@ -37,15 +35,6 @@ class Caller
     /**
      * Call Api.
      *
-     * This method is called upon requests made to "/",
-     * it uses Guzzle's request() method to make a GET
-     * request to http://py-monitor-api.local/monitor.
-     *
-     * the chosen endpoint returns a JSON array
-     * containing information, please look at
-     * https://github.com/cversyx/py-monitor-api for
-     * more details
-     *
      * @param string $method
      * @param string $endpoint
      *
@@ -55,11 +44,12 @@ class Caller
     {
         if (env('APP_DEBUG') === true) {
             $file = __DIR__.'/../../tests/'.$endpoint.'.json';
-            if (file_exists($file)) {
-                return toArray(json_decode(file_get_contents($file)));
-            } else {
+
+            if (!file_exists($file)) {
                 return false;
             }
+
+            return toArray(json_decode(file_get_contents($file)));
         }
 
         if (substr($endpoint, 0, 1) !== '/') {
@@ -68,13 +58,17 @@ class Caller
 
         try {
             $response = $this->client->request($method, $endpoint);
-            if ($response && $response->getStatusCode() === 200) {
-                return toArray(json_decode($response->getBody()->getContents()));
-            } else {
+
+            if (!$response) {
+                app('log')->error('could not fetch from ' . $endpoint);
+
                 return false;
             }
+
+            return toArray(json_decode($response->getBody()->getContents()));
+
         } catch (GuzzleException $e) {
-            echo $e->getMessage();
+            app('log')->error($e->getMessage());
 
             return false;
         }
