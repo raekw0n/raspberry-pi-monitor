@@ -1,6 +1,8 @@
 # Raspberry Pi Monitor
 
-A client for the [raspberry pi monitor API](https://github.com/raekw0n/raspberry-pi-monitor-api)
+A client for the [raspberry pi monitor API.](https://github.com/raekw0n/raspberry-pi-monitor-api)
+
+![image](https://i.imgur.com/sWoKUfH.png)
 
 ## Installation
 
@@ -34,8 +36,7 @@ $ npm install
 
 To enable testing for development purposes, set `APP_DEBUG=true` in your `.env`, this will load the json test data contained within `tests/`, rather than calling the API.
 
-
-![image](https://i.imgur.com/sWoKUfH.png)
+Raspberry Pi Monitor is built using [Danielle Micro Framework](https://github.com/raekw0n/danielle-micro-framework) - You can find documentation [here](https://github.com/raekw0n/danielle-micro-framework). 
 
 ## License
 Raspberry Pi Monitor is open-sourced software licensed under the MIT license.
