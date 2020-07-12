@@ -6,7 +6,7 @@ HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 
 const App = {
-    gauge: (id, data, format, yStop) => {
+    gauge: ({id, data, format, yStop}) => {
         Highcharts.chart(id, {
             chart: {
                 type: 'solidgauge'

@@ -97,9 +97,23 @@
 {% block scripts %}
     <script>
         $(() => {
-            App.gauge('temp', Math.round({{ core.data.cpu.temp }}), '{y}°C', '#28a745');
-            App.gauge('cpu', Math.round({{ core.data.cpu.usage }}), '{y}%', '#28a745');
-            App.gauge('disk', Math.round({{ core.data.disk.percent }}), '{y}%', '#28a745');
+            let metrics = {
+                temp: Math.round({{ core.data.cpu.temp }}),
+                cpu: Math.round({{ core.data.cpu.usage }}),
+                disk: Math.round({{ core.data.disk.percent }}),
+            };
+
+            let yStop = '#28a745';
+
+            Object.keys(metrics).forEach((key) => {
+                let format = (key === 'temp') ? '{y}°C' : '{y}%';
+                App.gauge({
+                    id: key,
+                    data: metrics[key],
+                    format: format,
+                    yStop: yStop
+                });
+            });
         });
     </script>
 {% endblock %}
