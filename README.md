@@ -1,5 +1,3 @@
-[![StyleCI](https://github.styleci.io/repos/197078264/shield?branch=master)](https://github.styleci.io/repos/197078264)
-
 # Raspberry Pi Monitor
 
 A client for the [raspberry pi monitor API](https://github.com/raekw0n/raspberry-pi-monitor-api)
