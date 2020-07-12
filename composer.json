@@ -7,7 +7,14 @@
             "email": "me@rowles.ch"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "RaspiMon\\": "src/"
+        }
+    },
     "require": {
-        "raekw0n/danielle": "^0.0.1"
+        "raekw0n/danielle": "^0.0.1",
+        "guzzlehttp/guzzle": "^7.0",
+        "ext-json": "*"
     }
 }

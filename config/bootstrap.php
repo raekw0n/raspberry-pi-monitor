@@ -13,11 +13,11 @@ Dotenv\Dotenv::create(__DIR__ . '/../')->load();
 $app = new Pimple\Container();
 
 $app->register(new Danielle\Providers\LogServiceProvider());
-$app->register(new Danielle\Providers\DatabaseServiceProvider());
+//$app->register(new Danielle\Providers\DatabaseServiceProvider());
 $app->register(new Danielle\Providers\RouteServiceProvider());
 $app->register(new Danielle\Providers\ViewServiceProvider());
 
-new Danielle\Handlers\ExceptionHandler($app);
+$app->register(new RaspiMon\Providers\ApiServiceProvider());
 
 /**
  * boot method to fetch services from the container

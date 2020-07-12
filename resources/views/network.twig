@@ -107,7 +107,7 @@
 {% block scripts %}
     <script>
         $(function () {
-            App.gauge('#quality', Math.round({{ network.data.wifi[0].quality }}), '{y}%', '#28a745')
+            App.gauge('quality', Math.round({{ network.data.wifi[0].quality }}), '{y}%', '#28a745')
         });
     </script>
 {% endblock %}

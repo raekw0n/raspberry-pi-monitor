@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace RaspiMon\Controllers;
 
 use Pimple\Container;
 use Danielle\Traits\AjaxDetector;
@@ -16,7 +16,10 @@ abstract class Controller
     protected $log;
 
     /** @var mixed $db */
-    protected $db;
+//    protected $db;
+
+    /** @var mixed $api */
+    protected $api;
 
     /** @var mixed $router */
     protected $router;
@@ -35,7 +38,8 @@ abstract class Controller
     public function __construct(Container $container)
     {
         $this->log = $container['log'];
-        $this->db = $container['db'];
+//        $this->db = $container['db'];
+        $this->api = $container['api'];
         $this->router = $container['router'];
         $this->view = $container['view'];
 

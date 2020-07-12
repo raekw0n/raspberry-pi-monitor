@@ -38,10 +38,10 @@
             // I have absolutely no idea why, but the attribute works backwards :/
             if (pressed === "false") {
                 status = "enabled";
-                TweenMax.to($('.fan-status'), 2, {rotation: 360, repeat: -1, ease: Linear.easeInOut});
+                gsap.to($('.fan-status'), 2, {rotation: 360, repeat: -1, ease: Linear.easeInOut});
             } else {
                 status = "disabled";
-                TweenMax.killAll();
+                gsap.killAll();
             }
             $.get('http://raspberry-api.local/system/fan/set/' + status, (response) => {
                 alert("Fan is " + JSON.stringify(response.data));

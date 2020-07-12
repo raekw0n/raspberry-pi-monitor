@@ -1,8 +1,8 @@
 <?php
 
-use App\Controllers\DashboardController;
-use App\Controllers\NetworkController;
-use App\Controllers\SettingsController;
+use RaspiMon\Controllers\DashboardController;
+use RaspiMon\Controllers\NetworkController;
+use RaspiMon\Controllers\SettingsController;
 
 /*----------------------------------------
  | Register application controllers       |

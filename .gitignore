@@ -1,2 +1,10 @@
 /node_modules
 /vendor
+/.env
+/.idea
+
+/public/cache/*
+!/public/cache/README.md
+
+/logs/*
+!/logs/README.md

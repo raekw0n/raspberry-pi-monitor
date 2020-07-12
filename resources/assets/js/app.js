@@ -1,6 +1,13 @@
+import * as Highcharts from 'highcharts';
+import * as HighchartsMore from 'highcharts/highcharts-more';
+import * as HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
+
+HighchartsMore(Highcharts);
+HighchartsSolidGauge(Highcharts);
+
 const App = {
     gauge: (id, data, format, yStop) => {
-        $(id).highcharts({
+        Highcharts.chart(id, {
             chart: {
                 type: 'solidgauge'
             },
