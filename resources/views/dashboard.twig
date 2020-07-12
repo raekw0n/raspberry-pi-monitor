@@ -98,9 +98,9 @@
     <script>
         $(() => {
             let metrics = {
-                temp: Math.round({{ core.data.cpu.temp }}),
-                cpu: Math.round({{ core.data.cpu.usage }}),
-                disk: Math.round({{ core.data.disk.percent }}),
+                temp: {{ core.data.cpu.temp }},
+                cpu: {{ core.data.cpu.usage }},
+                disk: {{ core.data.disk.percent }},
             };
 
             let yStop = '#28a745';

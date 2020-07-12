@@ -70,7 +70,7 @@ const App = {
             },
             series: [{
                 innerRadius: '90%',
-                data: [data]
+                data: [Math.round(data)]
             }]
         });
     }
