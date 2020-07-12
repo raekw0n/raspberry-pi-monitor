@@ -53,7 +53,7 @@ class Caller
      */
     public function call(string $endpoint, string $method = 'GET')
     {
-        if (env('DEBUG') === true) {
+        if (env('APP_DEBUG') === true) {
             $file = __DIR__.'/../../tests/'.$endpoint.'.json';
             if (file_exists($file)) {
                 return toArray(json_decode(file_get_contents($file)));
