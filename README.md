@@ -1,4 +1,9 @@
-# Raspberry Pi Monitor
+
+*** **UPDATE** ***
+
+A new lightweight Vue client has been released, [check it out](https://github.com/raekw0n/raspi-mon)!
+
+# RaspiMon
 
 A client for the [raspberry pi monitor API.](https://github.com/raekw0n/raspberry-pi-monitor-api)
 
